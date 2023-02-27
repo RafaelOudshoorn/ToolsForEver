@@ -34,6 +34,9 @@ Route::get('admin/product/{id}', function () {
 Route::get('/order', function () {
     return view('order/create');
 });
+Route::get('/order/proceed', function () {
+    return view('order/show');
+});
 Auth::routes();
 
 Route::get('/', [CRUDController::class, 'index']);
@@ -55,4 +58,6 @@ Route::post('/delete/winkelwagen/{id}', [CRUDController::class, 'destroyProductF
 Route::post('/delete/product/{id}', [CRUDController::class, 'destroy']);
 
 Route::get('/order', [OrdersController::class, 'index']);
+Route::get('/order/proceed',[OrdersController::class, 'orderView']);
 Route::post('/create/order', [OrdersController::class, 'store']);
+Route::post('/update/order/{$id}', [OrdersController::class, 'edit']);

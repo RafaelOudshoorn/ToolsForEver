@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'editor' => env('IGNITION_EDITOR', 'phpstorm'),
+    'editor' => env('IGNITION_EDITOR', 'vscode'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'theme' => env('IGNITION_THEME', 'auto'),
+    'theme' => env('IGNITION_THEME', 'light'),
 
     /*
     |--------------------------------------------------------------------------

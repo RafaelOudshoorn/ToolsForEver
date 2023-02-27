@@ -3,47 +3,55 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <h4>Bestelling</h4>
+            <h4>Bestelling: Betaling</h4>
             <div class="w-100 mb-5">
-                <div class="p-2" style="width:35%;margin-left:auto;margin-right:auto;">
-                    <?php
-                        echo "<script>";
-                        echo "let countTotal = ";
-                        foreach($winkelwagen as $cItem){
-                            echo "$cItem->total + ";
-                        }
-                        echo "0;";
-
-                        echo "let subtotal = ";
-                        foreach($winkelwagen as $wItem){
-                            echo "($wItem->price * $wItem->total) + ";
-                        }
-                        echo "0;";
-                        echo "</script>";
-                    ?>
-                    <div class="card" style="margin-bottom:7px;">
-                        <div class="card-title text-center">
-                            <br>
-                            <h5 style="font-weight: bold">Overzicht</h5>
-                        </div>
-                        <div class="card-body">
-                            <div style="display: grid;grid-template-columns: auto auto">
-                                <p>Artikelen (<script>document.write(countTotal)</script>)</p>
-                                <p class="float-end text-end" style="font-weight:bold">€<script>document.write(subtotal.toFixed(2))</script></p>
-                            </div>
-                            <div style="display: grid;grid-template-columns: auto auto">
-                                @foreach ($winkelwagen as $overzicht)
-                                    <p>{{ $overzicht->name }}</p>
-                                    <p class="float-end text-end">x{{ $overzicht->total }}</p>
+                <div class="card p-2" style="margin-left:auto;margin-right:auto;">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <p>
+                                Bedrijf: ToolsForEver <br>
+                                Addres: laan 5 <br>
+                                Postcode: 1234 EF <br>
+                                www.ToolsForEver.nl
+                            </p>
+                            <p>
+                                {{ Auth::user()->name; }} <br>
+                                {{ Auth::user()->email; }}
+                            </p>
+                            <p>
+                                Order: #{{ $order->id }} <br>
+                                Date: {{ $order->created_at }}
+                            </p>
+                        </div>  
+                        <hr/>  
+                        Bestelling
+                        <table class="table">
+                            <thead>
+                                <th>Product</th>
+                                <th>Hoeveelheid</th>
+                                <th>Artikelprijs</th>
+                                <th>Totaal</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($order_products as $item)
+                                    <tr>
+                                        <td>{{ $item->product_name }}</td>
+                                        <td>x{{ $item->total }}</td>
+                                        <td>€{{ $item->price }}</td>
+                                        <td>€{{ $item->price * $item->total}}</td>
+                                    </tr>
                                 @endforeach
-                            </div>
-                            <hr class="bg-danger border-2 border-top border-danger">
-                            <div style="display: grid;grid-template-columns: auto auto">
-                                <p class="float-left">Nog te betalen: </p>
-                                <p class="float-right text-end" style="font-weight:bold">€<script>document.write(subtotal.toFixed(2))</script></p>
-                            </div>
-                            <a href="order/proceed" class="btn btn-primary w-100">Plaats bestelling</a>
-                        </div>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <th>€{{ $order->total }}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        {!! Form::open(['action' => ['App\Http\Controllers\OrdersController@edit', $order->id], 'method' => 'POST']) !!}
+                            <button type="submit" class="btn btn-primary">Betaal</button>
+                        {{ Form::close() }}
                     </div>
                 </div>
             </div>

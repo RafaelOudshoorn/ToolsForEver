@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <h4>Bestelling</h4>
+            <h4>Bestelling: Doorlopen</h4>
             <div class="w-100 mb-5">
                 <div class="p-2" style="width:35%;margin-left:auto;margin-right:auto;">
                     <?php
@@ -14,7 +14,7 @@
                         }
                         echo "0;";
 
-                        echo "let subtotal = ";
+                        echo "var subtotal = ";
                         foreach($winkelwagen as $wItem){
                             echo "($wItem->price * $wItem->total) + ";
                         }
@@ -42,7 +42,11 @@
                                 <p class="float-left">Nog te betalen: </p>
                                 <p class="float-right text-end" style="font-weight:bold">€<script>document.write(subtotal.toFixed(2))</script></p>
                             </div>
-                            <a href="order/proceed" class="btn btn-primary w-100">Plaats bestelling</a>
+                            {!! Form::open(['action' => ['App\Http\Controllers\OrdersController@store'], 'method' => 'POST', 'class' => 'pull-right']) !!}
+                                <input type="hidden" name="total" id="totalValue" value="">
+                                <button type="submit" class="btn btn-primary w-100">Plaats bestelling</button>
+                            {{ Form::close() }}
+                            <script>document.getElementById('totalValue').value = subtotal.toFixed(2)</script>
                         </div>
                     </div>
                 </div>
