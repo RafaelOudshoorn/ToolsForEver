@@ -11,6 +11,7 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu"> 
+                {{-- Wanneer niet ingelogt --}}
                 @guest
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="winkelwagen"><i class="fa-solid fa-cart-shopping"></i> Winkelwagen</a>
@@ -25,9 +26,21 @@
                     <a class="nav-link active" aria-current="page" href="register">register</a>
                 </li>
                 @else
-                {{-- Waneer er is ingelogt --}}
+                {{-- Wanneer wel ingelogt --}}
                 <li class="nav-item mr-5">
-                    <a class="nav-link active" aria-current="page" href="/winkelwagen"><i class="fa-solid fa-cart-shopping"></i> Winkelwagen</a>
+                    <a class="nav-link active" aria-current="page" href="/winkelwagen">
+                        <i class="fa-solid fa-cart-shopping"></i> Winkelwagen
+                        <?php
+                            echo "<script>";
+                            echo "let navTotal = ";
+                            foreach($winkelwagenItems as $navItem){
+                                echo "$navItem->total + ";
+                            }
+                            echo "0;";
+                            echo "if(navTotal != 0){if(navTotal >= 100){navTotal = '99+';}document.write('( '+navTotal+' )');}";
+                            echo "</script>";
+                        ?>
+                    </a>
                 </li>
                 @if (Auth::user()->role_id != 2) 
                 @else
