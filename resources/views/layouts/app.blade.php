@@ -13,9 +13,39 @@
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+        <style>
+            .profile-menu { 
+                .dropdown-menu{
+                    right: 0;
+                    left: unset;
+                }
+                .fa-fw{
+                    margin-right: 10px;
+                }  
+            }
+            .toggle-change{
+                &::after {
+                border-top: 0;
+                border-bottom: .3em solid;
+                }
+            } 
+        </style>
+        <script>
+            document.querySelectorAll('.dropdown-toggle').forEach(item => {
+                item.addEventListener('click', event => {
+                    if(event.target.classList.contains('dropdown-toggle') ){
+                    event.target.classList.toggle('toggle-change');
+                    }
+                    else if(event.target.parentElement.classList.contains('dropdown-toggle')){
+                    event.target.parentElement.classList.toggle('toggle-change');
+                    }
+                })
+            });
+        </script>
     </head>
     <body>
         <x-navbar/>

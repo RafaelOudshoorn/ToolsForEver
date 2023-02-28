@@ -1,68 +1,72 @@
-    <nav class="navbar navbar-expand-lg bg-primary p-3 nav-main" style="display:grid;grid-template-columns: auto 40% 50%">
-        <span class="navbar-brand mb-0 h1 text-white">ToolsForEver</span>
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-item nav-link active text-dark bg-light" href="/"> Home</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav d-flex justify-content-end" style="margin-right:-50px">
-            @guest
-            <li class="nav-item active">
-                <a class="nav-item nav-link active text-white" href="../login">Inloggen</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-item nav-link active text-white" href="../register">Registeren</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-item nav-link active text-dark bg-light" href="/winkelwagen"><span class="material-symbols-outlined">shopping_cart</span> Winkelwagen</a>
-            </li>
-            @else
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">ToolsForEver</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border:none;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu"> 
+                @guest
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="winkelwagen"><i class="fa-solid fa-cart-shopping"></i> Winkelwagen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="login">login</a>
+                </li>
+                <li class="nav-item">
+                    <h2 class="text-light">|</h2>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="register">register</a>
+                </li>
+                @else
+                {{-- Waneer er is ingelogt --}}
+                <li class="nav-item mr-5">
+                    <a class="nav-link active" aria-current="page" href="/winkelwagen"><i class="fa-solid fa-cart-shopping"></i> Winkelwagen</a>
+                </li>
                 @if (Auth::user()->role_id != 2) 
                 @else
-                <li class="nav-item active">
-                    <a class="nav-item nav-link active text-dark bg-light" href="/product/aanmaken">+ Toevoegen Product </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-lock"></i> Admin Tools
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" aria-current="page" href="/product/aanmaken"><i class="fa-solid fa-plus"></i> Product toevoegen</a>
+                        </li>
+                    </ul>
                 </li>
                 @endif
-            <li class="nav-item active">
-                <a class="nav-item nav-link active text-dark bg-light" href="/winkelwagen">
-                    <span class="material-symbols-outlined">
-                        shopping_cart
-                    </span> 
-                    Winkelwagen
-                    <?php
-                        echo "<script>";
-                        echo "let navTotal = ";
-                        foreach($winkelwagenItems as $navItem){
-                            echo "$navItem->total + ";
-                        }
-                        echo "0;";
-                        echo "if(navTotal != 0){if(navTotal >= 100){navTotal = '99+';}document.write('( '+navTotal+' )');}";
-                        echo "</script>";
-                    ?>
-                </a>
-            </li>
-            <li class="nav-item active">
-                <div class="dropdown nav-item text-dark bg-light">
-                    <a id="Dropdown" class="nav-item nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <li class="nav-item dropdown" style="min-width:100px">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i>
                         {{ Auth::user()->name }}
                         @if (Auth::user()->role_id != 2) 
                         @else
                             (Admin)
                         @endif
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown">
-                        <a class="nav-item nav-link active bg-white text-dark dropdown-item" href="/user/bestellingen">
-                            {{ __('Bestelingen') }}
-                        </a>
-                        <a class="nav-item nav-link active bg-white text-dark dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </div>
-            </li>
-            @endguest    
-        </ul>
-    </nav>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-sliders-h fa-fw"></i> Account</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i> Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                @endguest
+            </ul>
+        </div>
+    </div>
+</nav>
