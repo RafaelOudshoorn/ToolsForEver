@@ -19,11 +19,11 @@ use App\Http\Controllers\OrdersController;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/product/aanmaken', function () {
-    return view('product.create');
-});
 Route::get('/winkelwagen', function () {
     return view('winkelwagen');
+});
+Route::get('/product/aanmaken', function () {
+    return view('product.create');
 });
 Route::get('/product/{id}', function () {
     return view('product.show');
@@ -36,6 +36,9 @@ Route::get('/order', function () {
 });
 Route::get('/order/proceed', function () {
     return view('order/show');
+});
+Route::get('/user/bestellingen', function () {
+    return view('user.bestellingen');
 });
 Auth::routes();
 
@@ -60,4 +63,4 @@ Route::post('/delete/product/{id}', [CRUDController::class, 'destroy']);
 Route::get('/order', [OrdersController::class, 'index']);
 Route::get('/order/proceed',[OrdersController::class, 'orderView']);
 Route::post('/create/order', [OrdersController::class, 'store']);
-Route::post('/update/order/{$id}', [OrdersController::class, 'edit']);
+Route::post('/edit/order/{id}', [OrdersController::class, 'edit']);

@@ -51,6 +51,9 @@
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Dropdown">
+                        <a class="nav-item nav-link active bg-white text-dark dropdown-item" href="/user/bestellingen">
+                            {{ __('Bestelingen') }}
+                        </a>
                         <a class="nav-item nav-link active bg-white text-dark dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>

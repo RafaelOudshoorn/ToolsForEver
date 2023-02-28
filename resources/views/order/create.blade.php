@@ -44,7 +44,7 @@
                             </div>
                             {!! Form::open(['action' => ['App\Http\Controllers\OrdersController@store'], 'method' => 'POST', 'class' => 'pull-right']) !!}
                                 <input type="hidden" name="total" id="totalValue" value="">
-                                <button type="submit" class="btn btn-primary w-100">Plaats bestelling</button>
+                                <button type="submit" class="btn btn-primary w-100">Verder naar betalen</button>
                             {{ Form::close() }}
                             <script>document.getElementById('totalValue').value = subtotal.toFixed(2)</script>
                         </div>

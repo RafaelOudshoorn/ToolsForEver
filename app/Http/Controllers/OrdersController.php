@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Product;
 use App\Models\Category;
@@ -43,6 +44,7 @@ class OrdersController extends Controller
         }
         $order = DB::table('orders')->orderBy('id', 'DESC')->first();
         $order_products = Order_products::whereOrder_id($order->id)->get();
+
         return view('/order/show')->with(['order'=>$order,'order_products'=>$order_products]);
     }
 
@@ -111,13 +113,15 @@ class OrdersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): RedirectResponse
     {
         $order = Order::find($id);
         $order->status = "payed";
         $order->updated_at = now();
         $order->save();
+
         return redirect('/')->with('success','Uw bestelling is aangekomen en wordt zo snel mogelijk verwerkt.');
+        return redirect('/')->with('error','Uw bestelling is aangekomen en wordt zo snel mogelijk verwerkt.');
     }
 
     /**
