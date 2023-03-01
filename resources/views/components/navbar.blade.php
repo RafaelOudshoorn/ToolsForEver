@@ -27,7 +27,7 @@
                 <li class="nav-item mr-5">
                     <a class="nav-link active" aria-current="page" href="/winkelwagen">
                         <i class="fa-solid fa-cart-shopping"></i> Winkelwagen
-                        <?php
+                        @php
                             echo "<script>";
                             echo "let navTotal = ";
                             foreach($winkelwagenItems as $navItem){
@@ -36,7 +36,7 @@
                             echo "0;";
                             echo "if(navTotal != 0){if(navTotal >= 100){navTotal = '99+';}document.write('( '+navTotal+' )');}";
                             echo "</script>";
-                        ?>
+                        @endphp
                     </a>
                 </li>
                 @if (Auth::user()->role_id != 2) 

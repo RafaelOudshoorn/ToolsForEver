@@ -5,7 +5,7 @@
         <h4>Bestelling: Doorlopen</h4>
         <div class="row d-flex justify-content-center">
             <div class="p-2 col-sm-12 col-lg-6">
-                <?php
+                @php
                     echo "<script>";
                     echo "let countTotal = ";
                     foreach($winkelwagen as $cItem){
@@ -19,7 +19,7 @@
                     }
                     echo "0;";
                     echo "</script>";
-                ?>
+                @endphp
                 <div class="card" style="margin-bottom:7px;">
                     <div class="card-title text-center">
                         <br>
