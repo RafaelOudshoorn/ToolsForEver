@@ -9,7 +9,7 @@
         <h4>Producten</h4>
         {!! Form::open(['action' => ['App\Http\Controllers\CRUDController@index'], 'method' => 'POST','class' => 'pull-right float-left row mb-3']) !!}
             <div class="col-sm-12 col-lg-3">
-                {{ Form::text('naam',$filter[0]['zoek'],['maxlength'=>'20', 'class'=>'form-control','placeholder'=>'Zoek']) }}
+                {{ Form::text('naam',$filter[0]['zoek'],['maxlength'=>'20', 'class'=>'form-control','placeholder'=>'Zoek..']) }}
             </div>
             <div class="col-sm-12 col-lg-3">
                 <select name="categorie" class="form-select">
