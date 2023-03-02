@@ -37,7 +37,10 @@ Route::get('/order', function () {
 Route::get('/order/proceed', function () {
     return view('order/show');
 });
-Route::get('/user/bestellingen', function () {
+Route::get('/account/', function (){
+    return view('user.index');
+});
+Route::get('/account/bestellingen', function () {
     return view('user.bestellingen');
 });
 Auth::routes();

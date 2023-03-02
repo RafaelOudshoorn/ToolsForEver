@@ -121,7 +121,7 @@ class OrdersController extends Controller
         $order->save();
 
         return redirect('/')->with('success','Uw bestelling is aangekomen en wordt zo snel mogelijk verwerkt.');
-        return redirect('/')->with('error','Uw bestelling is aangekomen en wordt zo snel mogelijk verwerkt.');
+        return redirect('/')->with('error','Uw bestelling is niet aangekomen! Probeer het nog eens.');
     }
 
     /**

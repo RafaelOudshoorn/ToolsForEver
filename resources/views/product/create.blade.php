@@ -1,10 +1,11 @@
-<?php
-    // Als een user geen admin role heeft dan wordt de user terug gestuurt naar de index
-    if(Auth::user()->role_id != 2){
-        header("location:../");
+{{-- // Als een user geen admin role heeft dan wordt de user terug gestuurt naar de index --}}
+@if(Auth::user()->role_id != 2)
+    @php
+        header("location:../../");
         die;
-    }
-?>
+    @endphp
+@endif
+
 @extends('layouts.app')
 
 @section('content')
