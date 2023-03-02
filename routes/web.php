@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CRUDController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,10 +39,10 @@ Route::get('/order/proceed', function () {
     return view('order/show');
 });
 Route::get('/account/', function (){
-    return view('user.index');
+    return view('account.index');
 });
 Route::get('/account/bestellingen', function () {
-    return view('user.bestellingen');
+    return view('account.bestellingen');
 });
 Auth::routes();
 
@@ -64,6 +65,10 @@ Route::post('/delete/winkelwagen/{id}', [CRUDController::class, 'destroyProductF
 Route::post('/delete/product/{id}', [CRUDController::class, 'destroy']);
 
 Route::get('/order', [OrdersController::class, 'index']);
-Route::get('/order/proceed',[OrdersController::class, 'orderView']);
+Route::get('/order/proceed/{id}',[OrdersController::class, 'orderView']);
 Route::post('/create/order', [OrdersController::class, 'store']);
 Route::post('/edit/order/{id}', [OrdersController::class, 'edit']);
+
+Route::get('/account/', [AccountController::class, 'index']);
+Route::post('update/account/index', [AccountController::class, 'updateUser']);
+Route::get('/account/bestellingen', [AccountController::class, 'bestellingen']);

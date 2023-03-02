@@ -34,16 +34,16 @@ class OrdersController extends Controller
         return view('order/create')->with(['winkelwagen'=>$winkelwagen]);
     }
 
-    public function orderView()
+    public function orderView(string $id)
     {
         if(isset(Auth::user()->id)){
-            $id = Auth::user()->id;
+            $userId = Auth::user()->id;
         }else{
-            $id = 0;
+            $userId = 0;
             return redirect('/');
         }
-        $order = DB::table('orders')->orderBy('id', 'DESC')->first();
-        $order_products = Order_products::whereOrder_id($order->id)->get();
+        $order = Order::whereUser_id($userId)->whereId($id)->get();
+        $order_products = Order_products::whereOrder_id($order[0]->id)->get();
 
         return view('/order/show')->with(['order'=>$order,'order_products'=>$order_products]);
     }
