@@ -63,6 +63,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/account/"><i class="fas fa-sliders-h fa-fw"></i> Account</a></li>
+                        <li><a class="dropdown-item" href="/account/bestellingen"><i class="fa-solid fa-box fa-fw"></i> Bestellingen</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

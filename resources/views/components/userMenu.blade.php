@@ -1,23 +1,17 @@
 <div class="container">
-    <div class="row overflow-hidden rounded">
-        <div class="bg-primary p-3 col-sm-0 col-lg-3 rounded-start" style="height:150px">
-            <hr>
-            <ul class="list-unstyled">
-                <li class=""><a class="text-decoration-none text-light" href="/account/"><i class="fas fa-sliders-h fa-fw"></i> Account</a></li>
-                <li class=""><a class="text-decoration-none text-light" href="bestellingen"><i class="fa-solid fa-box fa-fw"></i> Bestellingen</a></li>
-            </ul>
-            <hr>
-            {{-- <ul class="list-unstyled">
-                <li class=""><a class="text-decoration-none text-light" href="#">#</a></li>
-            </ul>
-            <hr>
-            <ul class="list-unstyled">
-                <li class=""><a class="text-decoration-none text-light" href="#">#</a></li>
-            </ul>
-            <hr> --}}
+    <div class="row">
+        <div class="card sticky-lg-top col-sm-12 col-lg-3" style="top:10px;height:150px">
+            <div class="card-body">
+                <hr>
+                <ul class="list-unstyled">
+                    <li class=""><a class="text-decoration-none" href="/account/"><i class="fas fa-sliders-h fa-fw"></i> Account</a></li>
+                    <li class=""><a class="text-decoration-none" href="bestellingen"><i class="fa-solid fa-box fa-fw"></i> Bestellingen</a></li>
+                </ul>
+                <hr>
+            </div>
         </div>
-        <div class="bg-primary p-3 col-sm-12 col-lg-9 rounded-bottom">
-            <div class="rounded p-2" style="background:#F9F6EE;min-height:400px">
+        <div class="card col-sm-12 col-lg-9 bg-primary" style="min-height:400px">
+            <div class="card-body p-2">
                 {{ $slot }}
             </div>
         </div>
