@@ -21,7 +21,7 @@
                             <label style="margin-top:5px;font-size:16px">Naam</label>
                         </div>
                         <div class="col-sm-12 col-lg-8">
-                            {{ Form::text('name', $gebruiker->name, ['id'=>'name','class'=>'form-control','disabled']) }}
+                            {{ Form::text('name', $gebruiker->name, ['id'=>'name','class'=>'form-control','disabled','maxlength'=>'20']) }}
                         </div>
                     </div>
                     <br>
@@ -30,7 +30,7 @@
                             <label style="margin-top:5px;font-size:16px">Email</label>
                         </div>
                         <div class="col-sm-12 col-lg-8">
-                            {{ Form::email('email', $gebruiker->email, ['id'=>'email','class'=>'form-control','disabled']) }}
+                            {{ Form::email('email', $gebruiker->email, ['id'=>'email','class'=>'form-control','disabled','maxlength'=>'40']) }}
                         </div>
                     </div>
                     @if ($gebruiker->role_id != 2)

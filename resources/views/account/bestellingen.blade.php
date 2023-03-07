@@ -28,11 +28,11 @@
                 Datetime: {{ $item->updated_at }}
             </div>
             <div class="card-body row">
-                <div class="col-sm-12 col-lg-3">
+                {{-- <div class="col-sm-12 col-lg-3">
                     {{ Auth::user()->name }}
-                </div>
-                <div class="col-sm-12 col-lg-8">
-                    €{{ $item->total }} 
+                </div> --}}
+                <div class="col-sm-12 col-lg-11">
+                    Totaal: €{{ $item->total }} 
                         @if($item->status != 'betaald')
                         <span>({{ ucfirst($item->status) }})</span>
                         @else
