@@ -60,6 +60,6 @@
             </div>
             @yield('content')
         </main>
-        <x-footer/>
+        {{-- <x-footer/> --}}
     </body>
 </html>
