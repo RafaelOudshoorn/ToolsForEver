@@ -87,12 +87,16 @@ class AccountController extends Controller
             'email' => 'required'
         ]);
         $gebruiker = User::find($id);
-        $gebruiker->name = $request->input('name');
-        $gebruiker->email = $request->input('email');
-        $gebruiker->save();
-
-        return redirect('/account/ ')->with('success','Uw gegevens zijn geüpdate.');
-        return redirect('/account/ ')->with('error','Er ging iets mis met het updaten van uw gegevens.');
+        if(($gebruiker->name == $request->input('name')) && ($gebruiker->email == $request->input('email'))){
+            return redirect('/account/ ');
+        }
+        else{
+            $gebruiker->name = $request->input('name');
+            $gebruiker->email = $request->input('email');
+            $gebruiker->save();
+            return redirect('/account/ ')->with('success','Uw gegevens zijn geüpdate.');
+            return redirect('/account/ ')->with('error','Er ging iets mis met het updaten van uw gegevens.');
+        }
     }
     public function update(Request $request, string $id)
     {
