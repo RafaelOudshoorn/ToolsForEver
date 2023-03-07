@@ -1,3 +1,9 @@
+@if(!isset(Auth::user()->name))
+    @php
+        header('location:/login');
+        die;
+    @endphp
+@endif  
 @extends('layouts.app')
 
 @section('content')
@@ -15,7 +21,7 @@
                             <label style="margin-top:5px;font-size:16px">Naam</label>
                         </div>
                         <div class="col-sm-12 col-lg-8">
-                            {{ Form::text('name', $gebruiker->name, ['id'=>'name','class'=>'form-control','disabled']) }}
+                            {{-- {{ Form::text('name', $gebruiker->name, ['id'=>'name','class'=>'form-control','disabled']) }} --}}
                         </div>
                     </div>
                     <br>
@@ -24,12 +30,12 @@
                             <label style="margin-top:5px;font-size:16px">Email</label>
                         </div>
                         <div class="col-sm-12 col-lg-8">
-                            {{ Form::email('email', $gebruiker->email, ['id'=>'email','class'=>'form-control','disabled']) }}
+                            {{-- {{ Form::email('email', $gebruiker->email, ['id'=>'email','class'=>'form-control','disabled']) }} --}}
                         </div>
                     </div>
-                    @if ($gebruiker->role_id != 2)
+                    {{-- @if ($gebruiker->role_id != 2) --}}
                         
-                    @else
+                    {{-- @else --}}
                     <div id="roleDiv">
                         <br>
                         <div class="row col-sm-12 col-lg-6">
@@ -41,7 +47,7 @@
                             </div>
                         </div>
                     </div>
-                    @endif
+                    {{-- @endif --}}
                     <br>
                     <div class="row col-sm-12 col-lg-6">
                         <div class="col-sm-12 col-lg-4">

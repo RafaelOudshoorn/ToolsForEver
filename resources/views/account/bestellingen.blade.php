@@ -1,3 +1,9 @@
+@if(!isset(Auth::user()->name))
+    @php
+        header('location:/login');
+        die;
+    @endphp
+@endif  
 @extends('layouts.app')
 
 @section('content')
