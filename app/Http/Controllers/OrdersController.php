@@ -98,7 +98,7 @@ class OrdersController extends Controller
                 $clearWinkelwagen = shopping_card::find($item->id);
                 $clearWinkelwagen->delete();
             }
-            return redirect("order/proceed")->with('success', 'winkelwagen is naar order tabel verplaatst en wacht nu orders af!');
+            return redirect("order/proceed/".$order->id)->with('success', 'winkelwagen is naar order tabel verplaatst en wacht nu orders af!');
         }
     }
 
