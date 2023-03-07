@@ -80,7 +80,7 @@ class OrdersController extends Controller
         }else{
             $order = new Order;
             $order->user_id = $id;
-            $order->status = "waiting payment";
+            $order->status = "niet betaald";
             $order->total = $request->input('total');
             $order->created_at = now();
             $order->updated_at = now();
@@ -116,7 +116,7 @@ class OrdersController extends Controller
     public function edit(string $id): RedirectResponse
     {
         $order = Order::find($id);
-        $order->status = "payed";
+        $order->status = "betaald";
         $order->updated_at = now();
         $order->save();
 

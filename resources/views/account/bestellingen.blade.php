@@ -15,7 +15,7 @@
         @if (sizeof($bestellingen) == 0)
         <div class="card">
             <div class="card-body">
-                <p>Geen bestelling bekendt.</p>
+                <p>U heeft nog niets besteld.</p>
             </div>
         </div>
         @else
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-sm-12 col-lg-8">
                     €{{ $item->total }} 
-                        @if($item->status != 'payed')
+                        @if($item->status != 'betaald')
                         <span>({{ ucfirst($item->status) }})</span>
                         @else
                         <span class="bg-success text-light rounded">{{ ucfirst($item->status) }}</span>

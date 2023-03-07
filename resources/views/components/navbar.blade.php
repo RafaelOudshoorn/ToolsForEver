@@ -52,7 +52,7 @@
                     </ul>
                 </li>
                 @endif
-                <li class="nav-item dropdown" style="min-width:100px">
+                <li class="nav-item dropdown" style="min-width:130px">
                     <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user"></i>
                         {{ Auth::user()->name }}

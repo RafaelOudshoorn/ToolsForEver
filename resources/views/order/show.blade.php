@@ -89,7 +89,7 @@
                     </div>
                     <br>
                     {!! Form::open(['action' => ['App\Http\Controllers\OrdersController@edit', $order[0]->id], 'method' => 'POST', 'class' => 'pull-right']) !!}
-                        <button @if($order[0]->status != 'waiting payment') disabled @endif type="submit" class="btn btn-success">Betaal</button>
+                        <button @if($order[0]->status != 'niet betaald') disabled @endif type="submit" class="btn btn-success">Betaal</button>
                     {{ Form::close() }}
                     <a href="/account/bestellingen" type="button" class="btn btn-primary">Terug</a>
                 </div>
