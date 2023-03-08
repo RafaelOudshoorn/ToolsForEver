@@ -7,7 +7,7 @@
         <p>Kan geen producten vinden</p>
         @else
         <h4>Producten</h4>
-        {!! Form::open(['action' => ['App\Http\Controllers\CRUDController@index'], 'method' => 'POST','class' => 'pull-right float-left row mb-3']) !!}
+        {!! Form::open(['action' => ['App\Http\Controllers\CRUDController@index'], 'method' => 'POST','class' => 'pull-right row mb-3']) !!}
             <div class="col-sm-12 col-lg-3">
                 {{ Form::text('naam',$filter[0]['zoek'],['id'=>'zoek','maxlength'=>'20', 'class'=>'form-control','placeholder'=>'Zoek..']) }}
             </div>
@@ -43,9 +43,9 @@
                 </select>
             </div>
             <div class="col-sm-12 col-lg-3">
-                <div class="row">
-                    <button type="button" class="btn btn-danger col-sm-6 col-lg-2" onclick="document.location.href = './';"><i class="fa-regular fa-circle-xmark"></i></button>
-                    {{ Form::submit('Filter', ['class'=>'btn btn-primary btn-block col-sm-12 col-lg-10']) }}
+                <div class="row overflow-hidden">
+                    {{ Form::submit('Filter', ['class'=>'btn btn-primary btn-block col-sm-12 col-lg-6']) }}
+                    <button type="button" class="btn col-sm-6 col-lg-2" onclick="document.location.href = './';"><i class="fa-regular fa-circle-xmark"></i></button>
                 </div>
             </div>
         {!! Form::close() !!}

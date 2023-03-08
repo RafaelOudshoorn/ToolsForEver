@@ -10,7 +10,7 @@
                 <hr>
             </div>
         </div>
-        <div class="card col-sm-12 col-lg-9 bg-primary" style="min-height:400px">
+        <div class="card col-sm-12 col-lg-9 bg-primary bg-gradient" style="min-height:400px">
             <div class="card-body p-2">
                 {{ $slot }}
             </div>
