@@ -18,7 +18,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
         <style>
-            .profile-menu { 
+            .profile-menu {
                 .dropdown-menu{
                     right: 0;
                     left: unset;
