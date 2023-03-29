@@ -141,7 +141,7 @@ class CRUDController extends Controller
             ->join('products', 'shopping_cards.product_id', 'products.id')
             ->select('shopping_cards.id as id','shopping_cards.total','products.name','products.price','products.id as product_id','products.image')
             ->where('shopping_cards.user_id', $id)
-            ->orderBy('id', 'ASC')
+            ->orderBy('id', 'DESC')
             ->get();
         return view('winkelwagen')->with(['winkelwagen'=>$winkelwagen]);
     }
