@@ -90,7 +90,7 @@ class AuthController extends Controller
                 'status' => true,
                 'id' => $user->id,
                 'message' => 'User Logged In Successfully',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
+                'token' => $user->createToken("API TOKEN")->plainTextToken 
             ], 200);
 
         } catch (\Throwable $th) {
